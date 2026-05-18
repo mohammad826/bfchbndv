@@ -6,7 +6,6 @@ import { Decimal } from '@prisma/client/runtime/library';
 export class AdService {
   constructor(
     private prisma: PrismaService,
-    private notificationService?: any,
   ) {}
 
   async claimReward(userId: string) {
