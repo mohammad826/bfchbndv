@@ -51,6 +51,8 @@ model User {
   transactions  Transaction[]
   withdrawals   Withdrawal[]
   adRewards     AdReward[]
+  notifications Notification[]
+  taskCompletions TaskCompletion[]
   
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
