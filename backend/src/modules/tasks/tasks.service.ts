@@ -111,7 +111,7 @@ export class TasksService {
     const [totalCount, completedCount] = await Promise.all([
       this.prisma.sponsorTask.count({ where: { isActive: true } }),
       this.prisma.taskCompletion.count({
-        where: { userId, task: { isActive: true } },
+        where: { userId, sponsorTask: { isActive: true } },
       }),
     ]);
 
