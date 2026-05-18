@@ -73,7 +73,7 @@ export class UserService {
         photoUrl: true,
         balance: true,
         referralCount: {
-          select: { _count: { select: { referrals: true } } }
+          _count: { select: { referrals: true } }
         }
       }
     });
