@@ -2,7 +2,7 @@
 
 import { useStore } from "@/store/useStore";
 import { ArrowLeft, Play, Gift, Star, Wallet, Shield, Package } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import api from "@/api/axios";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -53,7 +53,7 @@ export default function HistoryPage() {
     fetchTransactions(1);
   }, [activeTab]);
 
-  const fetchTransactions = async (pageNum: number) => {
+  const fetchTransactions = useCallback(async (pageNum: number) => {
     if (pageNum === 1) setLoading(true);
     else setLoadingMore(true);
 
@@ -75,13 +75,13 @@ export default function HistoryPage() {
       setLoading(false);
       setLoadingMore(false);
     }
-  };
+  }, [activeTab]);
 
-  const loadMore = () => {
+  const loadMore = useCallback(() => {
     if (page < totalPages && !loadingMore) {
       fetchTransactions(page + 1);
     }
-  };
+  }, [page, totalPages, loadingMore, fetchTransactions]);
 
   const getFilteredTransactions = (): Transaction[] => {
     if (activeTab === 'All') return transactions;
