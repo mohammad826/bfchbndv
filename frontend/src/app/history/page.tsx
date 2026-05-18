@@ -215,7 +215,7 @@ function TransactionCard({
       <div className="flex-1 min-w-0">
         <p className="font-bold text-sm text-gray-800">{config.label}</p>
         <p className="text-xs text-gray-400 mt-0.5">
-          {formatDate(transaction.createdAt)} · {formatTime(transaction.createdAt)}
+          {formatDate(transaction.createdAt)} at {formatTime(transaction.createdAt)}
         </p>
       </div>
 
