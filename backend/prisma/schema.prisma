@@ -139,6 +139,7 @@ model SponsorTask {
   type        String   @default("subscribe")
   isActive    Boolean  @default(true)
   totalClaims Int      @default(0)
+  completions TaskCompletion[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -148,8 +149,10 @@ model TaskCompletion {
   userId    String
   user      User     @relation(fields: [userId], references: [id])
   taskId    String
+  sponsorTask SponsorTask @relation(fields: [taskId], references: [id])
   completedAt DateTime @default(now())
 
   @@unique([userId, taskId])
   @@index([userId])
+  @@index([taskId])
 }
