@@ -181,7 +181,6 @@ export default function HistoryPage() {
             </motion.div>
           </AnimatePresence>
         )}
-        </div>
       </div>
     </div>
   );
