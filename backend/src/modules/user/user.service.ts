@@ -72,9 +72,7 @@ export class UserService {
         firstName: true,
         photoUrl: true,
         balance: true,
-        referralCount: {
-          _count: { select: { referrals: true } }
-        }
+        _count: { select: { referrals: true } }
       }
     });
 
@@ -84,7 +82,7 @@ export class UserService {
       username: u.username || u.firstName || 'Anonymous',
       photoUrl: u.photoUrl,
       balance: u.balance,
-      referrals: u.referralCount._count.referrals,
+      referrals: u._count.referrals,
       isCurrentUser: u.id === currentUserId,
     }));
 
