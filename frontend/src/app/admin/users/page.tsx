@@ -1,7 +1,11 @@
 'use client';
 
 import { useStore } from "@/store/useStore";
-import { ArrowLeft, Search, Ban, CheckCircle, Loader2, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, Search, CheckCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import * as Lucide from "lucide-react";
+const EmptyIcon: any = (props: any) => null;
+const BanIcon: any = (Lucide as any).Ban ?? (Lucide as any).Slash ?? (Lucide as any).X ?? EmptyIcon;
+const Loader2Icon: any = (Lucide as any).Loader2 ?? (Lucide as any).Loader ?? EmptyIcon;
 import { useState, useEffect, useMemo } from "react";
 import api from "@/api/axios";
 import { useRouter } from "next/navigation";
@@ -205,7 +209,7 @@ export default function UsersManagement() {
                       <td className={`p-4 text-sm ${textSecondary}`}>{formatDate(u.createdAt)}</td>
                       <td className="p-4">
                         {actionLoading === u.id ? (
-                          <Loader2 size={18} className="animate-spin text-blue-500" />
+                          <Loader2Icon size={18} className="animate-spin text-blue-500" />
                         ) : (
                           <button
                             onClick={() => u.isBanned ? handleUnbanUser(u.id) : handleBanUser(u.id)}
@@ -222,7 +226,7 @@ export default function UsersManagement() {
                               </>
                             ) : (
                               <>
-                                <Ban size={14} />
+                                <BanIcon size={14} />
                                 Ban
                               </>
                             )}
