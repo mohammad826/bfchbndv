@@ -1,7 +1,9 @@
 'use client';
 
 import { useStore } from "@/store/useStore";
-import { ArrowLeft, Users, UserCheck, Clock, DollarSign } from "lucide-react";
+import { ArrowLeft, Users, Clock, DollarSign } from "lucide-react";
+import * as Lucide from "lucide-react";
+const UserCheckIcon = (Lucide as any).UserCheck ?? (Lucide as any).Check;
 import { useState, useEffect } from "react";
 import api from "@/api/axios";
 import { useRouter } from "next/navigation";
@@ -130,7 +132,7 @@ export default function AdminDashboard() {
             },
             {
               i: 1,
-              icon: UserCheck,
+              icon: UserCheckIcon,
               label: 'Active Today',
               value: statsLoading ? '—' : (stats?.activeToday ?? 0).toLocaleString(),
               color: 'text-green-600',
