@@ -7,7 +7,7 @@ const UserCheckIcon = (Lucide as any).UserCheck ?? (Lucide as any).Check;
 import { useState, useEffect } from "react";
 import api from "@/api/axios";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 interface Stats {
   totalUsers: number;
@@ -90,12 +90,12 @@ export default function AdminDashboard() {
     return `px-2.5 py-1 rounded-full text-xs font-bold border ${classes[status] || ''}`;
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
+    visible: (i: any) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.1, duration: 0.4, ease: 'easeOut' }
+      transition: { delay: i * 0.1, duration: 0.4 }
     })
   };
 
